@@ -1,0 +1,4 @@
+PassengerNodejs /home/t/tborenhw/.local/bin/node
+PassengerAppRoot /home/t/tborenhw/centerSupport/centerSupport/back
+PassengerAppType node
+PassengerStartupFile index.js

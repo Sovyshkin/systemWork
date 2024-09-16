@@ -12,8 +12,8 @@ const mkdirp = require("mkdirp");
 const path = require("path");
 
 // модули самого бэкенда
-const { sequelize, UserModel, ServiceModel } = require("./modules/models");
-const { secret } = require(`./config`);
+const { sequelize, UserModel, ServiceModel } = require("../modules/models");
+const { secret } = require(`../config`);
 const { isBooleanObject } = require("util/types");
 
 let app = express();
