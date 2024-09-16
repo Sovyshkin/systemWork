@@ -1,4 +1,14 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router/router";
 
-createApp(App).mount('#app')
+import axios from "axios";
+// при пустом url запросы автоматически идут на исходный сервер,
+// поэтому коренной рут по сути не нужен
+axios.defaults.baseURL = "http://localhost:3015";
+
+const app = createApp(App);
+
+app.use(router);
+
+app.mount("#app");
