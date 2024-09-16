@@ -13,27 +13,31 @@ export default {
   },
   methods: {
     async load_info() {
-      let res1 = await axios.post(`/get_services`, {
-        ru: true,
-      });
-      let servicesRu = res1.data.services;
-      if (servicesRu.length > 4) {
-        this.ru1 = servicesRu.slice(0, 4);
-        this.ru2 = servicesRu.slice(4, 8);
-      } else {
-        this.ru1 = servicesRu.slice(0, 10);
-        this.ru2 = [];
-      }
-      let res2 = await axios.post(`/get_services`, {
-        ru: false,
-      });
-      let services = res2.data.services;
-      if (services.length > 10) {
-        this.ot1 = services.slice(0, 10);
-        this.ot2 = services.slice(10, 20);
-      } else {
-        this.ot1 = services.slice(0, 10);
-        this.ot2 = [];
+      try {
+        let res1 = await axios.post(`/get_services`, {
+          ru: true,
+        });
+        let servicesRu = res1.data.services;
+        if (servicesRu.length > 4) {
+          this.ru1 = servicesRu.slice(0, 4);
+          this.ru2 = servicesRu.slice(4, 8);
+        } else {
+          this.ru1 = servicesRu.slice(0, 10);
+          this.ru2 = [];
+        }
+        let res2 = await axios.post(`/get_services`, {
+          ru: false,
+        });
+        let services = res2.data.services;
+        if (services.length > 10) {
+          this.ot1 = services.slice(0, 10);
+          this.ot2 = services.slice(10, 20);
+        } else {
+          this.ot1 = services.slice(0, 10);
+          this.ot2 = [];
+        }
+      } catch (err) {
+        console.log(err);
       }
     },
   },

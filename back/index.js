@@ -36,7 +36,7 @@ app.use((_req, res, next) => {
 });
 
 // Раздача статики
-app.use("/assets", express.static("public/assets"));
+app.use("/assets", express.static("../public/assets"));
 // Настройка POST-запроса — JSON
 app.use(express.json());
 app.use(fileUpload());
