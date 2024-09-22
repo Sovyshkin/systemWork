@@ -12,8 +12,8 @@ const mkdirp = require("mkdirp");
 const path = require("path");
 
 // модули самого бэкенда
-const { sequelize, UserModel, ServiceModel } = require("../modules/models");
-const { secret } = require(`../config`);
+const { sequelize, UserModel, ServiceModel } = require("./modules/models");
+const { secret } = require(`./config`);
 const { isBooleanObject } = require("util/types");
 
 let app = express();
@@ -36,7 +36,7 @@ app.use((_req, res, next) => {
 });
 
 // Раздача статики
-app.use("/assets", express.static("../public/assets"));
+app.use("/assets", express.static("./public/assets"));
 // Настройка POST-запроса — JSON
 app.use(express.json());
 app.use(fileUpload());
