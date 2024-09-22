@@ -12,13 +12,14 @@ export default {
 </script>
 
 <template>
-  <AppHeader />
-  <router-view></router-view>
+  <AppHeader class="header" />
+  <router-view class="wrapView"></router-view>
   <AppFooter
     v-if="
       this.$route.name != 'admin' &&
       this.$route.name != 'login' &&
-      this.$route.name != 'create'
+      this.$route.name != 'create' &&
+      this.$route.name != 'service'
     "
   />
 </template>
@@ -145,6 +146,14 @@ button::-moz-focus-inner {
 .bx:hover {
   box-shadow: 0 0 10px 7px #53515137;
   transform: translateY(-3px);
+}
+
+.header {
+  height: 10vh;
+}
+
+.wrapView {
+  transform: translateY(12vh);
 }
 
 @media (max-width: 540px) {

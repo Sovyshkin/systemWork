@@ -47,7 +47,6 @@ export default {
 
 <style scoped>
 .wrapper {
-  margin-top: 100px;
   width: 100%;
   display: flex;
   align-items: stretch;

@@ -25,12 +25,13 @@ export default {
   },
   mounted() {
     this.load_info();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   },
 };
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="wrapSer">
     <div class="left bx">
       <h1 class="title">
         {{ title }}
@@ -48,12 +49,12 @@ export default {
 </template>
 
 <style scoped>
-.wrapper {
+.wrapSer {
   width: 100%;
   display: flex;
   align-items: stretch;
   gap: 10px;
-  padding: 100px 40px 60px 40px;
+  padding: 40px 40px;
 }
 .left,
 .right {
@@ -140,7 +141,7 @@ h1 {
 }
 
 @media (max-width: 1000px) {
-  .wrapper {
+  .wrapSer {
     flex-direction: column;
   }
 
@@ -205,6 +206,10 @@ h1 {
   .btn {
     flex: 100%;
     width: 100%;
+  }
+
+  .wrapSer {
+    padding: 10px;
   }
 }
 </style>

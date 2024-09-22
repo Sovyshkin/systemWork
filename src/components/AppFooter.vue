@@ -88,6 +88,7 @@ export default {
 
 <style scoped>
 .wrapper {
+  margin-top: 100px;
   width: 100%;
   padding: 20px 40px;
   display: flex;
