@@ -4,25 +4,35 @@ export default {
   name: "AppLogin",
   data() {
     return {
-      login: "",
-      password: "",
-      token: "",
+      name: "",
+      surname: "",
+      phone: "+7",
+      id: "",
       message: "",
     };
+  },
+  computed: {
+    formatPhoneNumber() {
+      return this.phone ? this.phone.replace(/[^+\d]/g, "") : "";
+    },
   },
   methods: {
     async log() {
       try {
-        if (this.login && this.password) {
+        if (this.name && this.surname && this.phone) {
           let response = await axios.post(`/login`, {
-            login: this.login,
-            password: this.password,
+            name: this.name,
+            surname: this.surname,
+            phone: this.phone,
           });
           this.message = response.data.message;
-          this.token = response.data.token;
+          this.id = response.data.id;
           if (this.message == "Успешно") {
-            localStorage.setItem("token", this.token);
-            this.$router.push({ name: "admin" });
+            localStorage.setItem("id", this.id);
+            setTimeout(() => {
+              this.message = "";
+              this.$router.push({ name: "objects" });
+            }, 2500);
           }
           setTimeout(() => {
             this.message = "";
@@ -31,6 +41,14 @@ export default {
       } catch (err) {
         console.log(err);
       }
+    },
+    updateValue(e) {
+      let input = e.target.value.replace(/[^+\d]/g, "");
+      if (!input.startsWith("+")) {
+        input = "+";
+      }
+      this.phone = input;
+      e.target.value = this.formatPhoneNumber;
     },
   },
   mounted() {},
@@ -43,21 +61,34 @@ export default {
       <div class="group">
         <input
           type="text"
-          name="login"
-          id="login"
-          v-model="login"
-          placeholder="Введите свой логин"
+          name="name"
+          id="name"
+          v-model="name"
+          placeholder="Введите свое имя"
         />
-        <span class="group-value">Логин</span>
+        <span class="group-value">Имя</span>
       </div>
       <div class="group">
         <input
-          type="password"
-          name="pass"
-          v-model="password"
-          placeholder="Введите пароль"
+          type="text"
+          name="surname"
+          id="surname"
+          v-model="surname"
+          placeholder="Введите свою фамилию"
         />
-        <span class="group-value">Пароль</span>
+        <span class="group-value">Фамилия</span>
+      </div>
+      <div class="group">
+        <input
+          :value="formatPhoneNumber"
+          @input="updateValue($event)"
+          type="tel"
+          size="20"
+          required
+          name="number"
+          placeholder="+7"
+        />
+        <span class="group-value">Номер телефона</span>
       </div>
       <button v-if="!message" @click="log" class="btn">Войти</button>
       <div
@@ -78,7 +109,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 85vh;
 }
 .card {
   position: relative;
