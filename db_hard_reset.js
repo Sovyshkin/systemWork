@@ -2,7 +2,7 @@ let { sequelize, UserModel } = require("./modules/models");
 const bcrypt = require("bcryptjs");
 
 const load_info = async () => {
-  // await sequelize.drop();
+  await sequelize.drop();
   await sequelize.sync({
     alter: true,
   });
@@ -12,7 +12,7 @@ const load_info = async () => {
     where: {
       name: "Admin",
       surname: "Adminov",
-      phone: "+79228334948",
+      phone: "+7944944",
       role: "Администратор",
     },
   });
@@ -20,7 +20,7 @@ const load_info = async () => {
     const newUser = await UserModel.create({
       name: "Admin",
       surname: "Adminov",
-      phone: "+79228334948",
+      phone: "+7944944",
       role: "Администратор",
       accrued: 0,
       paid: 0,
