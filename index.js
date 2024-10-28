@@ -179,7 +179,7 @@ app.post(`/users/get/all`, async function (req, res) {
       });
       res.send({ inspectors });
     } else {
-      let users = await UserModel.findAll({ where: { role: "Cотрудник" } });
+      let users = await UserModel.findAll({ where: { role: "Сотрудник" } });
       let accrued = 0;
       let paid = 0;
       let total = 0;

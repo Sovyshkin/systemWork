@@ -23,7 +23,7 @@ export default {
       try {
         this.isLoading = true;
         let response = await axios.post(`/users/get/all`, {
-          role: this.role,
+          role: "Сотрудник",
         });
         console.log(response);
         this.users = response.data.users;
