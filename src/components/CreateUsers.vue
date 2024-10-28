@@ -66,6 +66,9 @@ export default {
               this.$router.go(-1);
             }, 2500);
           }
+          setTimeout(() => {
+            this.message = "";
+          }, 2500);
         } else {
           this.message = "Заполните поля!";
           setTimeout(() => {

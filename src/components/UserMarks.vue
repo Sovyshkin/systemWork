@@ -17,6 +17,7 @@ export default {
   methods: {
     async load_info() {
       try {
+        this.id = this.$route.query.id;
         this.isLoading = true;
         let response = await axios.post(`/users/get`, {
           id: this.id,
@@ -43,10 +44,10 @@ export default {
     },
     async checkVerify() {
       try {
-        this.id = localStorage.getItem("id");
-        if (this.id) {
+        let id = localStorage.getItem("id");
+        if (id) {
           let response = await axios.post(`/users/check_verify`, {
-            id: this.id,
+            id: id,
           });
           console.log(response);
           if (response.data.message != "ok") {
