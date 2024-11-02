@@ -159,15 +159,21 @@ export default {
           <span class="value-group">{{ user.accrued }}р</span>
         </div>
         <div class="group">
-          <span class="item-group">К выплате</span>
+          <span class="item-group">Начислено</span>
           <span class="value-group">{{ user.paid }}р</span>
         </div>
         <div class="group">
-          <span class="item-group">Начислено</span>
+          <span class="item-group">Оплачено</span>
           <span class="value-group">{{ user.total }}р</span>
         </div>
       </div>
-      <button class="btn pay" @click="payTotal()">Оплатить</button>
+      <button
+        class="btn pay"
+        v-if="role == 'Администратор'"
+        @click="payTotal()"
+      >
+        Оплатить
+      </button>
     </div>
     <h2>Объекты к проверке</h2>
     <div class="vacancies" v-if="vacancies.length > 0">

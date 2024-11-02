@@ -108,7 +108,7 @@ export default {
       <div class="info-item">Описание</div>
       <div class="desc">{{ object.desc }}</div>
       <div class="works" v-if="id">
-        <div class="info-item">Работы</div>
+        <div class="info-item">Подобъекты</div>
         <div
           @click="$router.push({ name: 'work', query: { id: work.id } })"
           class="work"
